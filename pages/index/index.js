@@ -10,12 +10,12 @@ Page({
     sortOptions: ['账单日期', '还款日期', '待还款金额', '免息天数'],
     sortIndex: 0,
     dayRange: 30,
+    dayRangeIndex: 2, // Default to 30 days
     interestFreeDays: 0,
-    dayOptions: [
-      { label: '7天', value: 7 },
-      { label: '15天', value: 15 },
-      { label: '30天', value: 30 }
-    ],
+    dayOptions: Array.from({length: 30}, (_, i) => ({
+      label: `${i + 1}天`,
+      value: i + 1
+    })),
     repaymentCount: 0,
     retryCount: 0,
     isAuth: false,
@@ -96,6 +96,11 @@ Page({
 
       console.log(`第${this.retryCount + 1}次重试获取openid`)
       this.retryCount++
+      wx.showToast({
+        title: `第${this.retryCount}次尝试获取用户`,
+        icon: 'loading',
+        duration: 1000
+      })
       setTimeout(() => {
         this.loadCardList()
       }, 1000)
@@ -162,9 +167,11 @@ Page({
   },
 
   onDayRangeChange(e) {
-    const value = e.currentTarget.dataset.value
+    const index = e.detail.value
+    const value = this.data.dayOptions[index].value
     this.setData({ 
-      dayRange: Number(value)
+      dayRange: value,
+      dayRangeIndex: index
     })
     this.filterAndSortCards()
   },

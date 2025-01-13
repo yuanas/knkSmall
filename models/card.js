@@ -52,20 +52,24 @@ class Card {
 
   // 计算免息天数
   getInterestFreeDays() {
-    const billingDate = new Date()
-    billingDate.setDate(this.billingDay)
-    
-    const dueDate = new Date()
-    dueDate.setDate(this.paymentDueDay)
-    
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    const currentMonth = today.getMonth();
+
+    // 获取本月账单日
+    const billingDate = new Date(currentYear, currentMonth, this.billingDay);
+
+    // 获取本月还款日
+    let dueDate = new Date(currentYear, currentMonth, this.paymentDueDay);
+
     // 如果还款日在账单日之前，说明是下个月的还款日
     if (dueDate < billingDate) {
-      dueDate.setMonth(dueDate.getMonth() + 1)
+      dueDate = new Date(currentYear, currentMonth + 1, this.paymentDueDay);
     }
-    
+
     // 计算两个日期之间的天数差
-    const timeDiff = dueDate - billingDate
-    return Math.ceil(timeDiff / (1000 * 60 * 60 * 24))
+    const timeDiff = dueDate.getTime() - billingDate.getTime();
+    return Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
   }
 }
 
