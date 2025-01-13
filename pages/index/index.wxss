@@ -1,0 +1,157 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.filter-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.day-selector {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.selector-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.repayment-count {
+  color: #e64340;
+  font-weight: bold;
+}
+
+.day-options {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.day-option {
+  flex: 1;
+  min-width: 80px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.day-option.active {
+  border-color: #007bff;
+  background-color: #007bff;
+}
+
+.day-option.active .option-label,
+.day-option.active .option-days {
+  color: #fff;
+}
+
+.option-label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+}
+
+.option-days {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.first-card {
+  border: 2px solid #007bff;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+
+.card-item {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 6rpx rgba(0,0,0,0.1);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.bank-name {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.custom-name {
+  color: #666;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+}
+
+.amount-info {
+  font-size: 28rpx;
+  color: #e64340;
+}
+
+.date-info {
+  display: flex;
+  justify-content: space-between;
+  color: #666;
+  font-size: 24rpx;
+  padding: 10rpx 0;
+}
+
+.date-info text:nth-child(3) {
+  color: #07c160;
+  font-weight: bold;
+}
+
+.add-btn {
+  position: fixed;
+  bottom: 40rpx;
+  right: 40rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background: #07c160;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60rpx;
+}
+
+.auth-container {
+  padding: 30rpx;
+  text-align: center;
+  margin-top: 200rpx;
+}
+
+.auth-tip {
+  margin-bottom: 30rpx;
+  color: #666;
+  font-size: 28rpx;
+}
+
+.auth-button {
+  width: 80%;
+  margin: 0 auto;
+}

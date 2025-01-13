@@ -1,0 +1,32 @@
+{
+  "description": "信用卡管理助手",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "miniprogramRoot": "",
+  "compileType": "miniprogram",
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "compileHotReLoad": true,
+    "cloudbaseRoot": "cloudbase/"
+  },
+  "appid": "wxe28d4361946a523d",
+  "libVersion": "3.7.4",
+  "srcMiniprogramRoot": "miniprogram/knkSmall/",
+  "condition": {},
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  },
+  "cloudfunctionRoot": "cloudfunctions/"
+}

@@ -1,0 +1,81 @@
+<view class="container">
+  <!-- 未授权时显示授权按钮 -->
+  <view wx:if="{{!isAuth}}" class="auth-container">
+    <view class="auth-tip">请授权访问您的微信信息以使用小程序</view>
+    <button 
+      bindtap="onGetUserInfo"
+      type="primary"
+      class="auth-button"
+    >点击授权使用</button>
+  </view>
+
+  <!-- 已授权时显示卡片列表 -->
+  <view wx:else>
+    <!-- 排序和过滤选项 -->
+    <view class="filter-container">
+      <!-- 天数选择及待还款信息 -->
+      <view class="day-selector">
+        <view class="selector-header">
+          <text>选择查看天数：</text>
+          <text class="repayment-count">待还款：{{repaymentCount}}笔</text>
+        </view>
+        <view class="day-options">
+          <view 
+            wx:for="{{dayOptions}}" 
+            wx:key="value"
+            class="day-option {{dayRange === item.value ? 'active' : ''}}"
+            bindtap="onDayRangeChange"
+            data-value="{{item.value}}"
+          >
+            <text class="option-label">{{item.label}}</text>
+            <text class="option-days">{{item.value}}天</text>
+          </view>
+        </view>
+      </view>
+      
+      <!-- 排序选项 -->
+      <view class="sort-options">
+        <picker bindchange="onSortChange" value="{{sortIndex}}" range="{{sortOptions}}">
+          <view class="sort-picker">
+            排序方式：{{sortOptions[sortIndex]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <!-- 信用卡列表 -->
+    <view class="card-list">
+      <view 
+        class="card-item {{index === 0 ? 'first-card' : ''}}" 
+        wx:for="{{filteredCardList}}" 
+        wx:key="id" 
+        bindtap="onCardTap" 
+        data-id="{{item.id}}"
+      >
+        <view class="card-header">
+          <text class="bank-name">{{item.bankName}}</text>
+          <text class="custom-name">{{item.customName}}</text>
+        </view>
+        <view class="card-body">
+          <view class="amount-info">
+            <text>当前账单：¥{{item.currentBill}}</text>
+            <text>总额度：¥{{item.totalLimit}}</text>
+            <text>可用额度：¥{{item.availableLimit}}</text>
+          </view>
+          <view class="date-info">
+            <text>距离出账：{{item.daysToBilling}}天</text>
+            <text>距离还款：{{item.daysToPayment}}天</text>
+            <text>免息期：{{item.interestFreeDays}}天</text>
+          </view>
+          <view class="notification-info">
+            <text wx:if="{{item.notifications.limitAlert}}">额度提醒</text>
+            <text wx:if="{{item.notifications.largeAmountAlert}}">大额提醒</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 添加按钮 -->
+    <view class="add-btn" bindtap="onAddCard">+</view>
+  </view>
+</view>

@@ -1,0 +1,40 @@
+<view class="container">
+  <form bindsubmit="onSubmit">
+    <!-- 基础信息 -->
+    <view class="section">
+      <view class="section-title">基础信息</view>
+      <input name="cardNumber" value="{{card.cardNumber}}" placeholder="卡号" />
+      <input name="bankName" value="{{card.bankName}}" placeholder="发卡银行" />
+    </view>
+
+    <!-- 账单信息 -->
+    <view class="section">
+      <view class="section-title">账单信息</view>
+      <picker name="billingDay" mode="selector" range="{{days}}" value="{{card.billingDay-1}}">
+        <view>账单日：{{card.billingDay}}日</view>
+      </picker>
+      <picker name="paymentDueDay" mode="selector" range="{{days}}" value="{{card.paymentDueDay-1}}">
+        <view>还款日：{{card.paymentDueDay}}日</view>
+      </picker>
+    </view>
+
+    <!-- 提醒设置 -->
+    <view class="section">
+      <view class="section-title">提醒设置</view>
+      <switch name="billingDayReminder" checked="{{card.notifications.billingDayReminder}}">账单日提醒</switch>
+      <switch name="paymentDueReminder" checked="{{card.notifications.paymentDueReminder}}">还款日提醒</switch>
+    </view>
+
+    <!-- 附加信息 -->
+    <view class="section">
+      <view class="section-title">附加信息</view>
+      <input name="customName" value="{{card.customName}}" placeholder="自定义名称" />
+      <input name="cardType" value="{{card.cardType}}" placeholder="卡片种类" />
+      <input name="creditLimit" type="digit" value="{{card.creditLimit}}" placeholder="信用额度" />
+      <input name="annualFee" type="digit" value="{{card.annualFee}}" placeholder="年费" />
+      <textarea name="notes" value="{{card.notes}}" placeholder="备注" />
+    </view>
+
+    <button form-type="submit" type="primary">保存</button>
+  </form>
+</view> 
