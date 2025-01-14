@@ -10,6 +10,22 @@ Page({
     isNew: true
   },
 
+  // 处理账单日选择
+  onBillingDayChange(e) {
+    const day = parseInt(e.detail.value) + 1
+    this.setData({
+      'card.billingDay': day
+    })
+  },
+
+  // 处理还款日选择
+  onPaymentDueDayChange(e) {
+    const day = parseInt(e.detail.value) + 1
+    this.setData({
+      'card.paymentDueDay': day
+    })
+  },
+
   async onLoad(options) {
     if (options.id) {
       try {
@@ -56,7 +72,7 @@ Page({
   async onSubmit(e) {
     const formData = e.detail.value
     const cardData = {
-      cardName: formData.cardName,
+      bankName: formData.cardName,
       cardNumber: formData.cardNumber,
       billingDay: parseInt(formData.billingDay) + 1,
       paymentDueDay: parseInt(formData.paymentDueDay) + 1,
@@ -135,5 +151,10 @@ Page({
         icon: 'none'
       })
     }
+  },
+
+  // 取消编辑
+  onCancel() {
+    wx.navigateBack()
   }
 })

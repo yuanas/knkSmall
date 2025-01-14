@@ -10,10 +10,10 @@
     <!-- 账单信息 -->
     <view class="section">
       <view class="section-title">账单信息</view>
-      <picker name="billingDay" mode="selector" range="{{days}}" value="{{card.billingDay-1}}">
+      <picker name="billingDay" mode="selector" range="{{days}}" value="{{card.billingDay-1}}" bindchange="onBillingDayChange">
         <view>账单日：{{card.billingDay}}日</view>
       </picker>
-      <picker name="paymentDueDay" mode="selector" range="{{days}}" value="{{card.paymentDueDay-1}}">
+      <picker name="paymentDueDay" mode="selector" range="{{days}}" value="{{card.paymentDueDay-1}}" bindchange="onPaymentDueDayChange">
         <view>还款日：{{card.paymentDueDay}}日</view>
       </picker>
     </view>
@@ -28,13 +28,17 @@
     <!-- 附加信息 -->
     <view class="section">
       <view class="section-title">附加信息</view>
-      <input name="customName" value="{{card.customName}}" placeholder="自定义名称" />
-      <input name="cardType" value="{{card.cardType}}" placeholder="卡片种类" />
-      <input name="creditLimit" type="digit" value="{{card.creditLimit}}" placeholder="信用额度" />
-      <input name="annualFee" type="digit" value="{{card.annualFee}}" placeholder="年费" />
-      <textarea name="notes" value="{{card.notes}}" placeholder="备注" />
+      <input name="customName" value="{{card.additionalInfo.customName}}" placeholder="自定义名称" />
+      <input name="cardType" value="{{card.additionalInfo.cardType}}" placeholder="卡片种类" />
+      <input name="creditLimit" type="digit" value="{{card.additionalInfo.creditLimit}}" placeholder="信用额度" />
+      <input name="annualFee" type="digit" value="{{card.additionalInfo.annualFee}}" placeholder="年费" />
+      <textarea name="notes" value="{{card.additionalInfo.notes}}" placeholder="备注" />
     </view>
 
-    <button form-type="submit" type="primary">保存</button>
+    <view class="button-group">
+      <button form-type="submit" type="primary">保存</button>
+      <button type="warn" bindtap="onDelete">删除</button>
+      <button bindtap="onCancel">取消</button>
+    </view>
   </form>
-</view> 
+</view>

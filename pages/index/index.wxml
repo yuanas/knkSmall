@@ -37,6 +37,14 @@
         </view>
       </view>
 
+      <!-- 免息期排序按钮 -->
+      <view class="sort-button-container">
+        <button 
+          class="sort-button"
+          bindtap="onSortButtonTap"
+        >免息期排序</button>
+      </view>
+
       <!-- 卡片信息展示区域 -->
       <view class="cards-section">
         <view class="summary">
@@ -45,23 +53,41 @@
         
         <!-- 单个卡片 -->
         <block wx:for="{{filteredCardList}}" wx:key="_id">
-          <view class="card" bindtap="onCardTap" data-id="{{item._id}}">
-            <view class="card-header">
-              <text class="bank-name">{{item.bankName || item.customName}}</text>
-              <text class="card-type">{{item.cardType}}</text>
-            </view>
+          <movable-area class="movable-area">
+            <movable-view 
+              class="movable-view"
+              direction="horizontal"
+              out-of-bounds="true"
+              damping="40"
+              friction="40"
+            >
+              <view class="card" bindtap="onCardTap" data-id="{{item._id}}">
+                <view class="card-header">
+                  <text class="bank-name">{{item.bankName || item.customName}}</text>
+                  <text class="card-type">{{item.cardType}}</text>
+                </view>
+                
+                <view class="card-body">
+                  <view class="info-row">
+                    <text>账单日：{{item.daysToBilling}} 天后</text>
+                    <text>还款日：{{item.daysToPayment}} 天后</text>
+                  </view>
+                  <view class="info-row">
+                    <text>待还金额：¥{{item.currentBill}}</text>
+                    <text>免息期：{{item.interestFreeDays}} 天</text>
+                  </view>
+                </view>
+              </view>
+            </movable-view>
             
-            <view class="card-body">
-              <view class="info-row">
-                <text>账单日：{{item.daysToBilling}} 天后</text>
-                <text>还款日：{{item.daysToPayment}} 天后</text>
-              </view>
-              <view class="info-row">
-                <text>待还金额：¥{{item.currentBill}}</text>
-                <text>免息期：{{item.interestFreeDays}} 天</text>
-              </view>
+            <view class="action-buttons">
+              <view 
+                class="edit-button"
+                bindtap="onEditCard"
+                data-id="{{item._id}}"
+              >编辑</view>
             </view>
-          </view>
+          </movable-area>
         </block>
       </view>
 

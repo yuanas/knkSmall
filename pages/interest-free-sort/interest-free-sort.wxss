@@ -1,0 +1,45 @@
+.container {
+  padding: 20rpx;
+}
+
+.sort-result {
+  margin-top: 20rpx;
+}
+
+.card-item {
+  background: #fff;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.bank-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.card-type {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.card-body {
+  padding: 10rpx 0;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 10rpx 0;
+  font-size: 28rpx;
+  color: #666;
+}

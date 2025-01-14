@@ -30,6 +30,19 @@ textarea {
   margin-bottom: 20rpx;
 }
 
+/* 按钮组样式 */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.button-group button {
+  width: 100%;
+  margin-top: 0;
+}
+
 button {
   margin-top: 40rpx;
-} 
+}

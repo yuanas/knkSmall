@@ -1,0 +1,22 @@
+<view class="container">
+  <!-- 排序结果展示 -->
+  <view class="sort-result">
+    <block wx:for="{{sortedCards}}" wx:key="_id">
+      <view class="card-item">
+        <view class="card-header">
+          <text class="bank-name">{{item.bankName || item.customName}}</text>
+          <text class="card-type">{{item.cardType}}</text>
+        </view>
+        <view class="card-body">
+          <view class="info-row">
+            <text>免息期：{{item.interestFreeDays}} 天</text>
+          </view>
+          <view class="info-row">
+            <text>账单日：{{item.daysToBilling}} 天后</text>
+            <text>还款日：{{item.daysToPayment}} 天后</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

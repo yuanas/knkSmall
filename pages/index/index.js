@@ -222,5 +222,18 @@ Page({
     wx.navigateTo({
       url: `/pages/edit/edit?id=${id}`
     })
+  },
+
+  onSortButtonTap() {
+    wx.navigateTo({
+      url: '/pages/interest-free-sort/interest-free-sort'
+    })
+  },
+
+  onEditCard(e) {
+    const { id } = e.currentTarget.dataset
+    wx.navigateTo({
+      url: `/pages/edit/edit?id=${id}`
+    })
   }
 })

@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/edit/edit"
+    "pages/edit/edit",
+    "pages/interest-free-sort/interest-free-sort"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -10,4 +11,4 @@
     "navigationBarTextStyle": "black"
   },
   "cloud": true
-} 
+}
